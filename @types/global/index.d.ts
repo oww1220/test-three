@@ -15,6 +15,10 @@ declare global {
     type PromiseCallback = (resolve: (value: any) => void, reject: (reason?: any) => void) => void;
 }
 
+declare module 'three' {
+    Geometry()
+}
+
 
 
 

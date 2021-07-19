@@ -1,10 +1,6 @@
 import '@babel/polyfill';
 import { IJqMap, Iiscrolls, SwiperParam, slideSortParam } from 'CommonUI';
 import jQuery from 'jquery';
-import 'jqueryui';
-import 'slick-carousel';
-import IScroll from 'iscroll';
-import Swiper from 'swiper';
 
 namespace CommonUI {
     export const $: JQueryStatic = jQuery;
@@ -89,17 +85,6 @@ namespace CommonUI {
             }
 
             return new JqMap();
-        },
-    };
-    export const Slide = {
-        init(target: SwiperParam, sort: slideSortParam, option?: IObj) {
-            if (sort == 'slick' && typeof target === 'string') {
-                const $target = $(target);
-                return $target.slick(option!);
-            }
-            if (sort === 'swiper') {
-                return new Swiper(target, option!);
-            }
         },
     };
     export const Layer = {
@@ -322,127 +307,6 @@ namespace CommonUI {
                 e.preventDefault();
             });
         },
-        calander(
-            target: string,
-            option: IObj,
-            callback?: JQuery.TypeEventHandler<HTMLElement, unknown, any, any, 'change'>,
-        ) {
-            $(target).each(function () {
-                $(this).datepicker(option);
-                $(this).datepicker('setDate', 'today');
-                if (callback) $(this).on('change', callback);
-            });
-        },
-        customSelect(parent: string) {
-            const target = parent + ' button';
-            const listTarget = parent + ' a';
-            let $parent: JQuery;
-            $(document).on('click', target, function (e) {
-                $parent = $(this).parent();
-                if ($parent.hasClass('on')) {
-                    $parent.removeClass('on');
-                } else {
-                    $(parent).removeClass('on');
-                    $parent.addClass('on');
-                    CommonUI.Iscrolls.resize();
-                }
-                //console.log($parent);
-            });
-            $(document).on('click', listTarget, function (e) {
-                const bt = $parent.find('button');
-                const input = $parent.find('input');
-                const val = $(this).data('val');
-                const text = $(this).text();
-
-                input.val(val);
-                bt.text(text);
-                //console.log(input, input.val());
-
-                $parent.addClass('select');
-                $parent.removeClass('on');
-
-                e.preventDefault();
-            });
-        },
-        changeSelect(target: string) {
-            $(document).on('change', target, function (e) {
-                const val = $(this).val();
-                const target = $(this).parent().find('.selText');
-                if (val == 'DISP_ROOT') {
-                    target.html(target.attr('data-name') || '');
-                } else {
-                    target.html(
-                        $(this)
-                            .find('.bestSubCate' + val)
-                            .attr('data-name') || '',
-                    );
-                }
-            });
-        },
-        fixedTop() {
-            let enScrollTop = 0,
-                beScrollTop = 0;
-            const $header = $('#header'),
-                $topBanner = $('.top_bn_w'),
-                fixdTop = $header.offset()!.top || 0,
-                paddingTop = $header.height() || 0,
-                scrollThreshold = 90;
-
-            if ($topBanner.length && $topBanner.is(':visible')) {
-                $header.removeClass('fixed');
-                $header.css({ height: 'auto' });
-            } else {
-                $header.addClass('fixed');
-                $header.css({ height: paddingTop });
-            }
-
-            $(window).on('scroll', function (e) {
-                const scrollpos = window.scrollY || window.pageYOffset;
-
-                enScrollTop = scrollpos;
-
-                if ($topBanner.length && $topBanner.is(':visible')) {
-                    //console.log(fixdTop, scrollpos);
-                    if (fixdTop <= scrollpos) {
-                        $header.addClass('fixed');
-                    } else {
-                        $header.removeClass('fixed');
-                    }
-                }
-                if (Math.abs(enScrollTop - beScrollTop) < scrollThreshold) return false;
-
-                if (!$('body').hasClass('pc')) {
-                    beScrollTop > enScrollTop ? $header.removeClass('on') : $header.addClass('on');
-                } else {
-                    $header.removeClass('on');
-                }
-                beScrollTop = enScrollTop;
-            });
-        },
-    };
-    export const Iscrolls: Iiscrolls = {
-        cash: null,
-        num: 0,
-        init(target, option) {
-            this.cash = this.cash ? this.cash : CommonUI.Map.init();
-            $(target).each((idx: number, item) => {
-                const targetIdx = $(target)[idx];
-                //console.log(IScroll);
-                targetIdx.iscrolls = new IScroll(item, option);
-                //console.log(item);
-                this.cash!.put(this.num++, { sort: item, option: option });
-            });
-            //console.log(this.cash);
-        },
-        resize: function () {
-            if (!this.cash) return;
-            $.each(this.cash.map, (key: number, value: { sort: HTMLElement; option: IObj }) => {
-                if (value.sort.className == 'select_list') {
-                    //console.log(key, value.sort.iscrolls);
-                    value.sort.iscrolls!.scrollTo(0, 0);
-                }
-            });
-        },
     };
     export const Async = {
         generaterRun(gen: () => Generator) {
@@ -450,10 +314,6 @@ namespace CommonUI {
             (function iterate({ value, done }) {
                 if (done) return value;
                 if (value.constructor === Promise) {
-                    /*
-                        프라미스 객체가 이행(Fulfilled)상태면 -> then 핸들러 샐행 : resolve 된 값을 받아 멈춰진 yield 표현식 변수에 값을 넣어주고 다음 yield까지 코드 실행(재귀호출로)! 
-                        프라미스 객체가 실패(Rejected) 상태면 -> catch 핸들러 샐행 : Generator.throw 메소드를 실행하여 제너레이터에 에러를 알려줌!
-                    */
                     value.then((data) => iterate(iter.next(data))).catch((err) => iter.throw(err));
                 } else {
                     iterate(iter.next(value));
@@ -500,8 +360,6 @@ namespace CommonUI {
             });
         },
     };
-
-    //함수형 프로그래밍 공부용 모듈!
     export const Fn = {
         filter: function* <T>(f: (a: T) => boolean, iter: Iterable<T>) {
             for (const a of iter) {

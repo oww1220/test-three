@@ -23,7 +23,4 @@ Undefined: 정책 적용 안함.<br />
 
 ### ■ gulp 프로젝트 다운후 다운받은 경로에 `npm i` 패키지 설치
 
-### ■ package.json 에 scripts작성! 환경분리!
-
-### ■ 다운받은 경로에 `npm run pc` `npm run mo` ||  `yarn pc` `yarn mo` 명령어로 구동시킴
 

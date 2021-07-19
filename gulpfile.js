@@ -114,13 +114,18 @@ gulp.task('webpack', ()=>
                         priority: 1,
                         reuseExistingChunk: true,
                     },
-                    /*
                     jquery: {
                         test: /[\\/]node_modules[\\/](jquery)[\\/]/,
                         name: 'jquery',
                         priority: 2,
                         reuseExistingChunk: true,
-                    },*/
+                    },
+                    three: {
+                        test: /[\\/]node_modules[\\/](three)[\\/]/,
+                        name: 'three',
+                        priority: 2,
+                        reuseExistingChunk: true,
+                    },
                 }
             }
         },
