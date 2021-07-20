@@ -40,21 +40,21 @@ export class Stage {
     }
 
     _setRender() {
-        const elem: any = document.getElementById('webgl-universe');
+        const elem: any = document.getElementById('webgl-planet');
         this.renderer = new THREE.WebGLRenderer({
             canvas: elem,
             alpha: true,
         });
         this.renderer.setPixelRatio(window.devicePixelRatio);
-        this.renderer.setSize(this.renderParam.width, this.renderParam.height);
+        this.renderer.setSize(this.renderParam.width, this.renderParam.height / 2);
     }
 
     _setCamera() {
         const windowWidth = window.innerWidth;
-        const windowHeight = window.innerHeight;
+        const windowHeight = window.innerHeight / 2;
 
         if (!this.isInitialized) {
-            this.camera = new THREE.PerspectiveCamera(120, this.renderParam.width / this.renderParam.height);
+            this.camera = new THREE.PerspectiveCamera(2, this.renderParam.width / this.renderParam.height / 2);
         }
 
         this.camera!.aspect = windowWidth / windowHeight;
@@ -86,7 +86,7 @@ export class Stage {
 
 export class Mesh {
     stage: any;
-    mesh: null | THREE.Points;
+    mesh: any;
     constructor(stage) {
         this.stage = stage;
         this.mesh = null;
@@ -97,27 +97,15 @@ export class Mesh {
     }
 
     _setMesh() {
-        const geometry = new THREE.Geometry();
-        for (let i = 0; i < 10000; i++) {
-            const star = new THREE.Vector3();
-            star.x = THREE.MathUtils.randFloatSpread(2000);
-            star.y = THREE.MathUtils.randFloatSpread(2000);
-            star.z = THREE.MathUtils.randFloatSpread(2000);
+        const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
+        const material = new THREE.MeshBasicMaterial({ color: 0xffff00 });
 
-            geometry.vertices.push(star);
-        }
-        const texture = new THREE.TextureLoader().load('./assets/images/ico-star_on.png');
-        const material = new THREE.PointsMaterial({
-            color: 0xffffff,
-            size: 1,
-            map: texture,
-        });
-        this.mesh = new THREE.Points(geometry, material);
+        this.mesh = new THREE.Mesh(geometry, material);
         this.stage.scene.add(this.mesh);
     }
 
     _render() {
-        this.mesh!.rotation.y += 0.0005;
+        //this.mesh!.rotation.y += 0.0005;
     }
 
     onRaf() {
