@@ -86,10 +86,12 @@ export class Stage {
 
 export class Mesh {
     stage: any;
-    mesh: any;
+    meshLine: any;
+    meshPlanet: any;
     constructor(stage) {
         this.stage = stage;
-        this.mesh = null;
+        this.meshLine = null;
+        this.meshPlanet = null;
     }
 
     init() {
@@ -98,29 +100,31 @@ export class Mesh {
 
     _setMesh() {
         // 태두리
-        const geometry = new THREE.TorusGeometry(13, 1, 10, 100);
-        const material = new THREE.MeshBasicMaterial({ color: 0xffff00 });
+        const geometryLine = new THREE.TorusGeometry(13, 0.5, 3, 100);
+        const materialLine = new THREE.MeshBasicMaterial({ color: 0x036635 });
 
-        this.mesh = new THREE.Mesh(geometry, material);
-        this.stage.scene.add(this.mesh);
+        this.meshLine = new THREE.Mesh(geometryLine, materialLine);
+        this.stage.scene.add(this.meshLine);
 
         // 행성
-        const geometry2 = new THREE.CircleGeometry(10, 32);
-        const texture2 = new THREE.TextureLoader().load(
-            'https://threejsfundamentals.org/threejs/resources/images/wall.jpg',
-        );
-        const material2 = new THREE.MeshBasicMaterial({
-            map: texture2,
+        const geometryPlanet = new THREE.IcosahedronGeometry(10, 3);
+        const texturePlanet = new THREE.TextureLoader().load('./assets/images/test-texture.png');
+        texturePlanet.wrapS = THREE.RepeatWrapping;
+        texturePlanet.wrapT = THREE.RepeatWrapping;
+        texturePlanet.repeat.set(2, 1);
+        const materialPlanet = new THREE.MeshBasicMaterial({
+            map: texturePlanet,
             flatShading: true,
+            side: THREE.FrontSide,
         });
-        const cube = new THREE.Mesh(geometry2, material2);
-        this.stage.scene.add(cube);
+        this.meshPlanet = new THREE.Mesh(geometryPlanet, materialPlanet);
+        this.stage.scene.add(this.meshPlanet);
     }
 
     _render() {
-        this.mesh.rotation.x += 0.008;
-        this.mesh.rotation.y += 0.008;
-        //this.mesh!.rotation.y += 0.0005;
+        this.meshLine.rotation.x += 0.008;
+        this.meshLine.rotation.y += 0.008;
+        this.meshPlanet.rotation.y += 0.005;
     }
 
     onRaf() {
