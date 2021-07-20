@@ -107,7 +107,7 @@ export class Mesh {
         this.stage.scene.add(this.meshLine);
 
         // 행성
-        const geometryPlanet = new THREE.IcosahedronGeometry(10, 3);
+        const geometryPlanet = new THREE.IcosahedronGeometry(11, 5);
         const texturePlanet = new THREE.TextureLoader().load('./assets/images/test-texture.png');
         texturePlanet.wrapS = THREE.RepeatWrapping;
         texturePlanet.wrapT = THREE.RepeatWrapping;
