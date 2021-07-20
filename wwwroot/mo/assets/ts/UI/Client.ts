@@ -41,7 +41,7 @@ import * as Planet from '@src/UI/Planet';
     const render = (time) => {
         time *= 0.005; // convert time to seconds
         mesh.mesh.rotation.x += 0.01;
-        mesh.mesh.rotation.y += 0.01;
+        mesh.mesh.rotation.y += 0.0001;
         stage.onRaf();
         mesh.onRaf();
         requestAnimationFrame(render);
