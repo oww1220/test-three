@@ -102,7 +102,7 @@ export class Mesh {
             const star = new THREE.Vector3();
             star.x = THREE.MathUtils.randFloatSpread(2000);
             star.y = THREE.MathUtils.randFloatSpread(2000);
-            star.z = THREE.MathUtils.randFloatSpread(2000);
+            star.z = THREE.MathUtils.randFloatSpread(1600);
 
             geometry.vertices.push(star);
         }
