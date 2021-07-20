@@ -40,8 +40,9 @@ export class Stage {
     }
 
     _setRender() {
+        const elem: any = document.getElementById('webgl-canvas');
         this.renderer = new THREE.WebGLRenderer({
-            canvas: document.getElementById('webgl-canvas')![0],
+            canvas: elem,
             alpha: true,
         });
         this.renderer.setPixelRatio(window.devicePixelRatio);
@@ -53,7 +54,7 @@ export class Stage {
         const windowHeight = window.innerHeight;
 
         if (!this.isInitialized) {
-            this.camera = new THREE.PerspectiveCamera(70, this.renderParam.width / this.renderParam.height);
+            this.camera = new THREE.PerspectiveCamera(100, this.renderParam.width / this.renderParam.height);
         }
 
         this.camera!.aspect = windowWidth / windowHeight;
@@ -96,23 +97,7 @@ export class Mesh {
     }
 
     _setMesh() {
-        // const vertices: number[] = [];
-
-        // for ( let i = 0; i < 10000; i ++ ) {
-
-        //     const x = THREE.MathUtils.randFloatSpread( 2000 );
-        //     const y = THREE.MathUtils.randFloatSpread( 2000 );
-        //     const z = THREE.MathUtils.randFloatSpread( 2000 );
-
-        //     vertices.push( x, y, z );
-
-        // }
-
-        // const geometry = new THREE.BufferGeometry();
-        // geometry.setAttribute( 'position', new THREE.Float32BufferAttribute( vertices, 3 ) );
-
         const geometry = new THREE.Geometry();
-        //const geometry = new THREE.BufferGeometry();
         for (let i = 0; i < 10000; i++) {
             const star = new THREE.Vector3();
             star.x = THREE.MathUtils.randFloatSpread(2000);
@@ -122,8 +107,6 @@ export class Mesh {
             geometry.vertices.push(star);
         }
 
-        console.log(geometry.vertices);
-
         const material = new THREE.PointsMaterial({
             color: 0xffffff,
         });
@@ -132,7 +115,7 @@ export class Mesh {
     }
 
     _render() {
-        this.mesh!.rotation.y += 0.005;
+        this.mesh!.rotation.y += 0.0005;
     }
 
     onRaf() {
