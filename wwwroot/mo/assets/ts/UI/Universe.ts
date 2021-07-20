@@ -54,7 +54,7 @@ export class Stage {
         const windowHeight = window.innerHeight;
 
         if (!this.isInitialized) {
-            this.camera = new THREE.PerspectiveCamera(100, this.renderParam.width / this.renderParam.height);
+            this.camera = new THREE.PerspectiveCamera(120, this.renderParam.width / this.renderParam.height);
         }
 
         this.camera!.aspect = windowWidth / windowHeight;
@@ -102,13 +102,15 @@ export class Mesh {
             const star = new THREE.Vector3();
             star.x = THREE.MathUtils.randFloatSpread(2000);
             star.y = THREE.MathUtils.randFloatSpread(2000);
-            star.z = THREE.MathUtils.randFloatSpread(1600);
+            star.z = THREE.MathUtils.randFloatSpread(2000);
 
             geometry.vertices.push(star);
         }
-
+        const texture = new THREE.TextureLoader().load('./assets/images/ico-star_on.png');
         const material = new THREE.PointsMaterial({
             color: 0xffffff,
+            size: 1,
+            map: texture,
         });
         this.mesh = new THREE.Points(geometry, material);
         this.stage.scene.add(this.mesh);
