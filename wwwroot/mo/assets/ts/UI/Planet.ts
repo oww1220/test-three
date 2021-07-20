@@ -118,6 +118,8 @@ export class Mesh {
     }
 
     _render() {
+        this.mesh.rotation.x += 0.008;
+        this.mesh.rotation.y += 0.008;
         //this.mesh!.rotation.y += 0.0005;
     }
 
