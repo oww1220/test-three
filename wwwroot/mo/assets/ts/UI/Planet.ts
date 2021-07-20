@@ -97,11 +97,24 @@ export class Mesh {
     }
 
     _setMesh() {
-        const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
+        // 태두리
+        const geometry = new THREE.TorusGeometry(13, 1, 10, 100);
         const material = new THREE.MeshBasicMaterial({ color: 0xffff00 });
 
         this.mesh = new THREE.Mesh(geometry, material);
         this.stage.scene.add(this.mesh);
+
+        // 행성
+        const geometry2 = new THREE.CircleGeometry(10, 32);
+        const texture2 = new THREE.TextureLoader().load(
+            'https://threejsfundamentals.org/threejs/resources/images/wall.jpg',
+        );
+        const material2 = new THREE.MeshBasicMaterial({
+            map: texture2,
+            flatShading: true,
+        });
+        const cube = new THREE.Mesh(geometry2, material2);
+        this.stage.scene.add(cube);
     }
 
     _render() {

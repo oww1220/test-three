@@ -38,13 +38,13 @@ import * as Planet from '@src/UI/Planet';
         stage.onResize();
     });
 
-    const _raf = () => {
-        window.requestAnimationFrame(() => {
-            stage.onRaf();
-            mesh.onRaf();
-            _raf();
-        });
+    const render = (time) => {
+        time *= 0.005; // convert time to seconds
+        mesh.mesh.rotation.x += 0.01;
+        mesh.mesh.rotation.y += 0.01;
+        stage.onRaf();
+        mesh.onRaf();
+        requestAnimationFrame(render);
     };
-
-    _raf();
+    requestAnimationFrame(render);
 })();
