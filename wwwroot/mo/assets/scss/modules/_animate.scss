@@ -54,12 +54,21 @@
         transform: translate(-50%, -50%);
     }
     .drawer-cont {
-        background-image: linear-gradient(to right, #00cdff, #7d14ff);
+        //@error: linear-gradient(to right, #00cdff, #7d14ff);
         position: absolute;
         top: 0;
         left: 0;
         bottom: 0;
         right: 0;
+    }
+    .dummy {
+        background: url('../../../../images/dumy-overlay.png');
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background-size: cover;
     }
 }
 
