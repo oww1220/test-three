@@ -12,7 +12,6 @@
 /docs
 /build
 /wwwroot/mo/assets/scripts/build
-/wwwroot/mo/assets/bundle
 /wwwroot/mo/assets/mo
 *.map
 
