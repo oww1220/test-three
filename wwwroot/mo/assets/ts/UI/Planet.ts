@@ -104,7 +104,7 @@ export class Mesh {
         // 태두리
         //const geometryLine = new THREE.TorusGeometry(13, 0.5, 3, 100);
         const geometryLine = new THREE.RingGeometry(18, 15, 32);
-        const textureLine = new THREE.TextureLoader().load('./assets/images/test-texture.png');
+        const textureLine = new THREE.TextureLoader().load('../images/test-texture.png');
         const materialLine = new THREE.MeshBasicMaterial({
             //color: 0x036635,
             map: textureLine,
@@ -118,7 +118,7 @@ export class Mesh {
 
         // 행성
         const geometryPlanet = new THREE.SphereGeometry(11, 32, 32);
-        const texturePlanet = new THREE.TextureLoader().load('./assets/images/test-texture.png');
+        const texturePlanet = new THREE.TextureLoader().load('../images/test-texture.png');
         texturePlanet.wrapS = THREE.RepeatWrapping;
         texturePlanet.wrapT = THREE.RepeatWrapping;
         texturePlanet.repeat.set(2, 1);

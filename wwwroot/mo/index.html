@@ -8,16 +8,16 @@
 	<title></title>
 
     <link rel="stylesheet" href="./assets/styles/modules.css">
-    <script defer type="text/javascript" src="./assets/scripts/bundle/jquery.chunk.js"></script>
-    <script defer type="text/javascript" src="./assets/scripts/bundle/three.chunk.js"></script>
-    <script defer type="text/javascript" src="./assets/scripts/bundle/vendors.chunk.js"></script>
-    <script defer type="text/javascript" src="./assets/scripts/bundle/main.chunk.js"></script>
+    <script defer type="text/javascript" src="./assets/bundle/jquery.chunk.js"></script>
+    <script defer type="text/javascript" src="./assets/bundle/three.chunk.js"></script>
+    <script defer type="text/javascript" src="./assets/bundle/vendors.chunk.js"></script>
+    <script defer type="text/javascript" src="./assets/bundle/main.chunk.js"></script>
 </head>
 <body>
 
 
 <div>
-
+    <button type="button" class="btn-drawer-open">drawer-open</button>
     <canvas id="webgl-universe"></canvas>
     
     <div class="cont">
@@ -37,6 +37,18 @@ Whichever you choose, be consistent and import all files from the same version o
 All methods of installing three.js depend on ES modules (see Eloquent JavaScript: ECMAScript Modules), which allow you to include only the parts of the library needed in the final project.<br/>
         </p>
     </div>
+
+
+    <div class="drawer-W">
+        <div class="drawer-cont">
+            <button type="button" class="btn-drawer-close">drawer-close</button>
+            
+        </div>
+        <div class="dummy">
+            <img src="../images/dumy-overlay.png" alt="">
+        </div>
+    </div>
+
 
 </div>
 

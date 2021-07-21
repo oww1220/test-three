@@ -150,7 +150,7 @@ gulp.task('webpack', ()=>
             })
         ]
     }))
-    .pipe(gulp.dest(`${TASK_BASE_URL}/scripts/bundle`))
+    .pipe(gulp.dest(`${TASK_BASE_URL}/bundle`))
     .pipe(browserSync.reload({ stream: true }))
 );
 

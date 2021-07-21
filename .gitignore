@@ -11,8 +11,9 @@
 # production
 /docs
 /build
-/wwwroot/pc/assets/scripts/build
-/wwwroot/pc/assets/mo
+/wwwroot/mo/assets/scripts/build
+/wwwroot/mo/assets/bundle
+/wwwroot/mo/assets/mo
 *.map
 
 # misc
