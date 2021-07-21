@@ -88,10 +88,12 @@ export class Mesh {
     stage: any;
     meshLine: any;
     meshPlanet: any;
+    private lineFlag: boolean;
     constructor(stage) {
         this.stage = stage;
         this.meshLine = null;
         this.meshPlanet = null;
+        this.lineFlag = true;
     }
 
     init() {
@@ -100,14 +102,22 @@ export class Mesh {
 
     _setMesh() {
         // 태두리
-        const geometryLine = new THREE.TorusGeometry(13, 0.5, 3, 100);
-        const materialLine = new THREE.MeshBasicMaterial({ color: 0x036635 });
+        //const geometryLine = new THREE.TorusGeometry(13, 0.5, 3, 100);
+        const geometryLine = new THREE.RingGeometry(18, 15, 32);
+        const textureLine = new THREE.TextureLoader().load('./assets/images/test-texture.png');
+        const materialLine = new THREE.MeshBasicMaterial({
+            //color: 0x036635,
+            map: textureLine,
+            flatShading: true,
+            side: THREE.FrontSide,
+        });
 
         this.meshLine = new THREE.Mesh(geometryLine, materialLine);
         this.stage.scene.add(this.meshLine);
+        this.meshLine.rotation.x = 2;
 
         // 행성
-        const geometryPlanet = new THREE.IcosahedronGeometry(11, 5);
+        const geometryPlanet = new THREE.SphereGeometry(11, 32, 32);
         const texturePlanet = new THREE.TextureLoader().load('./assets/images/test-texture.png');
         texturePlanet.wrapS = THREE.RepeatWrapping;
         texturePlanet.wrapT = THREE.RepeatWrapping;
@@ -122,9 +132,22 @@ export class Mesh {
     }
 
     _render() {
-        this.meshLine.rotation.x += 0.008;
-        this.meshLine.rotation.y += 0.008;
+        //this.meshLine.rotation.x += 0.008;
+        //this.meshLine.rotation.y += 0.008;
         this.meshPlanet.rotation.y += 0.005;
+
+        if (Math.floor(this.meshLine.rotation.y * 10) / 10 === 0.4) {
+            this.lineFlag = false;
+        } else if (Math.floor(this.meshLine.rotation.y * 10) / 10 === -0.4) {
+            this.lineFlag = true;
+        }
+
+        if (this.lineFlag) {
+            this.meshLine.rotation.y += 0.002;
+        } else if (!this.lineFlag) {
+            this.meshLine.rotation.y -= 0.002;
+        }
+        //console.log(this.meshLine.rotation.y, this.lineFlag);
     }
 
     onRaf() {

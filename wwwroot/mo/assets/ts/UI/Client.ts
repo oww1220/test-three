@@ -24,7 +24,6 @@ import * as Planet from '@src/UI/Planet';
 
     _raf();
 })();
-
 (() => {
     const stage = new Planet.Stage();
 
