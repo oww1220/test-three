@@ -168,7 +168,7 @@ gulp.task('sass', ()=>
             //indentWidth: 1,
         }).on('error', sass.logError)
     )
-    .pipe(cssnano())
+    .pipe(cssnano({zindex: false}))
     .pipe(pxtorem({
             propList: ['*', '!'], // (Array) Use wildcard * to enable all properties. Use ! to not match a property. 
             rootValue: 16, // (Number | Function) Represents the root element font size

@@ -4,6 +4,7 @@ export{}
 declare global {
     interface Window{
         CommonUI: any;
+        //$: JQuery;
     }
     interface HTMLElement {
         iscrolls?: IScroll;

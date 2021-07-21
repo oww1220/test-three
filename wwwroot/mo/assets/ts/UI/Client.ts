@@ -1,5 +1,10 @@
 import * as Universe from '@src/UI/Universe';
 import * as Planet from '@src/UI/Planet';
+import CommonUI from '@src/CommonUI';
+import $ from 'jquery';
+
+const log = console.log;
+const { Async } = CommonUI;
 
 (() => {
     const stage = new Universe.Stage();
@@ -24,6 +29,7 @@ import * as Planet from '@src/UI/Planet';
 
     _raf();
 })();
+
 (() => {
     const stage = new Planet.Stage();
 
@@ -37,16 +43,6 @@ import * as Planet from '@src/UI/Planet';
         stage.onResize();
     });
 
-    // const render = (time) => {
-    //     time *= 0.005; // convert time to seconds
-    //     mesh.mesh.rotation.x += 0.001;
-    //     mesh.mesh.rotation.y += 0.08;
-    //     stage.onRaf();
-    //     mesh.onRaf();
-    //     requestAnimationFrame(render);
-    // };
-    // requestAnimationFrame(render);
-
     const _raf = () => {
         window.requestAnimationFrame(() => {
             stage.onRaf();
@@ -57,3 +53,57 @@ import * as Planet from '@src/UI/Planet';
 
     _raf();
 })();
+
+$(() => {
+    let cashGenerator: null | Generator = null;
+    let eventChkFlag = true;
+
+    function* drawerOpen() {
+        eventChkFlag = false;
+        try {
+            $('.drawer-W').addClass('active');
+
+            const delay1 = yield Async.wait(800);
+
+            $('.drawer-cont').addClass('bg');
+
+            const delay2 = yield Async.wait(100);
+
+            $('.drawer-W .dummy').hide();
+        } catch (err) {
+            log(err.message);
+        }
+        eventChkFlag = true;
+    }
+
+    function* drawerClose() {
+        eventChkFlag = false;
+        try {
+            $('.drawer-W .dummy').show();
+
+            const delay1 = yield Async.wait(100);
+
+            $('.drawer-cont').removeClass('bg');
+
+            const delay2 = yield Async.wait(800);
+
+            $('.drawer-W').removeClass('active');
+        } catch (err) {
+            log(err.message);
+        }
+        eventChkFlag = true;
+    }
+
+    $('.btn-drawer-open').on('click', () => {
+        //console.log(eventChkFlag);
+        if (!eventChkFlag) return;
+        cashGenerator = drawerOpen();
+        Async.generaterRun(cashGenerator);
+    });
+
+    $('.btn-drawer-close').on('click', () => {
+        if (!eventChkFlag) return;
+        cashGenerator = drawerClose();
+        Async.generaterRun(cashGenerator);
+    });
+});

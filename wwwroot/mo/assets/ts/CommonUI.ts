@@ -309,15 +309,25 @@ namespace CommonUI {
         },
     };
     export const Async = {
-        generaterRun(gen: () => Generator) {
-            const iter = gen();
-            (function iterate({ value, done }) {
+        generaterRun<T>(iter: Generator<T>): T | Promise<T> {
+            //generaterRun(gen: () => Generator) {
+            //const iter = gen();
+            //let flag = 0;
+            //console.log('%c--start generaterRun!--', 'color:green');
+            return (function iterate({ value, done }) {
+                //const num = ++flag
+                //console.log('스택 푸쉬 : ', num);
                 if (done) return value;
                 if (value.constructor === Promise) {
-                    value.then((data) => iterate(iter.next(data))).catch((err) => iter.throw(err));
+                    /*
+                        프라미스 객체가 이행(Fulfilled)상태면 -> then 핸들러 샐행 : resolve 된 값을 받아 멈춰진 yield 표현식 변수에 값을 넣어주고 다음 yield까지 코드 실행(재귀호출로)! 
+                        프라미스 객체가 실패(Rejected) 상태면 -> catch 핸들러 샐행 : Generator.throw 메소드를 실행하여 제너레이터에 에러를 알려줌!
+                    */
+                    return value.then((data) => iterate(iter.next(data))).catch((err) => iter.throw(err));
                 } else {
-                    iterate(iter.next(value));
+                    return iterate(iter.next(value));
                 }
+                //console.log('스택 팝 : ', num);
             })(iter.next());
         },
         wait(ms: number, value?: any) {
@@ -359,6 +369,32 @@ namespace CommonUI {
                 callback(resolve, reject);
             });
         },
+        debounce(f: (...args: any[]) => any, interval: number) {
+            let timer: ReturnType<typeof setTimeout> | null = null;
+            return (...args: any[]) => {
+                clearTimeout(timer!);
+                return new Promise((resolve) => {
+                    timer = setTimeout(
+                        () => resolve(f(...args)), //이함수 리턴값이 프람미스면 리턴값이 이함수 리턴값으로됨
+                        //예시 Promise.resolve(Promise.resolve(1)) 같은원리로 동작
+                        interval,
+                    );
+                });
+            };
+        },
+        throttling(f: (...args: any[]) => any, interval: number) {
+            let timer: ReturnType<typeof setTimeout> | null = null;
+            return (...args: any[]) => {
+                return new Promise((resolve) => {
+                    if (!timer) {
+                        timer = setTimeout(() => {
+                            resolve(f(...args));
+                            timer = null;
+                        }, interval);
+                    }
+                });
+            };
+        },
     };
     export const Fn = {
         filter: function* <T>(f: (a: T) => boolean, iter: Iterable<T>) {
@@ -391,3 +427,4 @@ export default CommonUI;
 
 //전역으로 내보냄 -- 선택사항
 window.CommonUI = CommonUI;
+//window.$ = window.CommonUI.$;
