@@ -88,98 +88,123 @@
     }
 }
 
-@keyframes height {
-    0% {
-        height: 0rem;
-        opacity: 1;
+.layer-rocket {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 45;
+    opacity: 1;
+    width: 100%;
+    height: 100%;
+    transition: transform 1s;
+    transform: translateY(93%);
+    //transform: translateY(53%);
+    .layer-top {
+        display: flex;
+        justify-content: center;
+        background: url('../../../images/bg-cloud.png') no-repeat center -135%;
+        background-size: cover;
+        padding-bottom: 5%;
+        transition: all 1s;
+        margin-bottom: -5px;
+        &.no-cloud {
+            background-position: center -300%;
+            padding-bottom: 0;
+        }
     }
-    100% {
-        height: 16rem;
-        opacity: 1;
-    }
-}
 
-@keyframes tracking-in-expand-fwd {
-    0% {
-        letter-spacing: -0.5em;
-        transform: translateZ(-700px);
+    .layer-cont {
+        height: 100%;
+        background-color: #fff;
+        overflow-x: hidden;
+        overflow-y: auto;
+        transition: all 0.5s;
+        &.active {
+            border-radius: 20px 20px 0 0;
+        }
+    }
+
+    .btn-rocket-open {
+        background-color: transparent;
+        border: 0;
+        width: 12%;
+        img {
+            width: 100%;
+        }
+        &.open {
+            animation: slide-out-top 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+        }
+        &.close {
+            animation: slide-in-blurred-bottom 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
+        }
+    }
+    .btn-rocket-close {
+        position: absolute;
+        top: 35px;
+        left: 50%;
+        margin-left: -5vw;
+        background: url('../../../images/rocket-close.svg') no-repeat center;
+        background-color: #fff;
+        border-radius: 100%;
+        width: 10vw;
+        height: 10vw;
+        border: 0;
+        font: 0/0 a;
+        transform: translateY(1000px) scaleY(2.5) scaleX(0.2);
+        transform-origin: 50% 100%;
+        filter: blur(40px);
         opacity: 0;
+        &.open {
+            animation: slide-in-blurred-bottom 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
+        }
+        &.close {
+            opacity: 0;
+            animation: slide-out-blurred-bottom 0.45s cubic-bezier(0.755, 0.05, 0.855, 0.06) both;
+        }
     }
-    40% {
-        opacity: 0.6;
-    }
-    100% {
-        transform: translateZ(0);
-        opacity: 1;
-    }
-}
 
-@keyframes scale-up-center {
-    0% {
-        transform: scale(0) rotate(270deg);
-    }
-    100% {
-        transform: scale(1) rotate(270deg);
-    }
-}
-
-@keyframes spinCircle {
-    from {
-        transform: rotate(0);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-@keyframes shake-vertical {
-    0%,
-    100% {
+    &.active {
         transform: translateY(0);
     }
-    10%,
-    30%,
-    50%,
-    70% {
-        transform: translateY(-4px);
+}
+
+@keyframes slide-out-top {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
     }
-    20%,
-    40%,
-    60% {
-        transform: translateY(4px);
-    }
-    80% {
-        transform: translateY(3px);
-    }
-    90% {
-        transform: translateY(-3px);
+    100% {
+        transform: translateY(-1000px);
+        opacity: 0;
     }
 }
 
-@keyframes anim {
+@keyframes slide-in-blurred-bottom {
     0% {
+        transform: translateY(1000px) scaleY(2.5) scaleX(0.2);
+        transform-origin: 50% 100%;
+        filter: blur(40px);
         opacity: 0;
-        transform: translateX(-300px);
-    }
-    33% {
-        opacity: 1;
-        transform: translateX(0px);
-    }
-    66% {
-        opacity: 1;
-        transform: translateX(0px);
     }
     100% {
-        opacity: 0;
-        transform: translateX(300px);
+        transform: translateY(0) scaleY(1) scaleX(1);
+        transform-origin: 50% 50%;
+        filter: blur(0);
+        opacity: 1;
     }
 }
 
-@keyframes progressbar {
+@keyframes slide-out-blurred-bottom {
     0% {
-        width: 0%;
+        transform: translateY(0) scaleY(1) scaleX(1);
+        transform-origin: 50% 50%;
+        filter: blur(0);
+        opacity: 1;
     }
     100% {
-        width: 100%;
+        transform: translateY(1000px) scaleY(2) scaleX(0.2);
+        transform-origin: 50% 100%;
+        filter: blur(40px);
+        opacity: 0;
     }
 }
