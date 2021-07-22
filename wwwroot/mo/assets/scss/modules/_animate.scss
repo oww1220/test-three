@@ -45,41 +45,46 @@
         right: 0;
         z-index: 3;
     }
-    .drawer-cont {
-        position: fixed;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        background: url('../../../images/base-overlay.png') center center no-repeat;
-        background-size: cover;
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.1s;
-        &.bg {
-            opacity: 1;
-            pointer-events: auto;
-        }
+}
+
+.drawer-cont {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: url('../../../images/base-overlay.png') center center no-repeat;
+    background-size: cover;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.1s;
+    &.bg {
+        opacity: 1;
+        pointer-events: auto;
     }
-    .dummy {
-        background: url('../../../images/dumy-overlay2.png') center center no-repeat;
-        position: fixed;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        background-size: cover;
-        // transform: scale(20);
-        // transform-origin: 50% 48%;
-        transform: scale(200);
-        transform-origin: 50% 48.5%;
-        pointer-events: none;
-        transition: transform 0.7s;
-    }
+}
+
+.bg-overlay {
+    background: url('../../../images/dumy-overlay.png') center center no-repeat;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-size: cover;
+    transform: scale(20);
+    transform-origin: 50% 48%;
+    //transform: scale(200);
+    //transform-origin: 50% 48.5%;
+    pointer-events: none;
+    transition: transform 0.7s;
+    opacity: 1;
+    z-index: 5;
     &.active {
-        .dummy {
-            transform: scale(1);
-        }
+        transform: scale(1);
+    }
+    &.hide {
+        opacity: 0;
     }
 }
 
