@@ -118,6 +118,9 @@ $(() => {
         function* rocketOpen() {
             eventChkFlag = false;
             try {
+                //스크롤막음
+                $('body').addClass('overlay-hidden');
+
                 //레이어팝업 열림
                 $('.layer-rocket').addClass('active');
 
@@ -145,6 +148,9 @@ $(() => {
         function* rocketClose() {
             eventChkFlag = false;
             try {
+                //스크롤 풀기
+                $('body').removeClass('overlay-hidden');
+
                 //닫기버튼 사라짐
                 $('.btn-rocket-close').removeClass('open');
                 $('.btn-rocket-close').addClass('close');
@@ -158,7 +164,8 @@ $(() => {
                 const delay2 = yield Async.wait(1000);
 
                 //로켓 위로
-                //$('.btn-rocket-open').addClass('close');
+                $('.btn-rocket-open').addClass('close');
+                $('.btn-rocket-open').removeClass('open');
 
                 const delay3 = yield Async.wait(600);
 

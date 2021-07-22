@@ -88,6 +88,9 @@
     }
 }
 
+body.overlay-hidden {
+    overflow: hidden;
+}
 .layer-rocket {
     position: fixed;
     top: 0;
@@ -102,11 +105,11 @@
     .layer-top {
         display: flex;
         justify-content: center;
-        background: url('../../../images/bg-cloud.png') no-repeat center -135%;
+        background: url('../../../images/bg-cloud.png') no-repeat center 15vw;
         background-size: cover;
-        padding-bottom: 5%;
         transition: all 1s;
         margin-bottom: -5px;
+        height: 28vw;
         &.no-cloud {
             background-position: center -300%;
             padding-bottom: 0;
@@ -122,12 +125,19 @@
         &.active {
             border-radius: 20px 20px 0 0;
         }
+        .layer-cont-in {
+            padding: 20px;
+        }
     }
 
     .btn-rocket-open {
+        position: absolute;
+        top: 0vw;
+        left: 50%;
+        margin-left: -6vw;
         background-color: transparent;
         border: 0;
-        width: 12%;
+        width: 12vw;
         img {
             width: 100%;
         }
@@ -140,7 +150,7 @@
     }
     .btn-rocket-close {
         position: absolute;
-        top: 35px;
+        top: 8vw;
         left: 50%;
         margin-left: -5vw;
         background: url('../../../images/rocket-close.svg') no-repeat center;
