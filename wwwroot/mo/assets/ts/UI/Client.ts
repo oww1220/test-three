@@ -153,12 +153,12 @@ $(() => {
 
                 //레이어팝업 닫힘
                 $('.layer-rocket').removeClass('active');
-                $('.btn-rocket-open').css({ opacity: 0 }).removeClass('open');
+                $('.btn-rocket-open').removeClass('open');
 
                 const delay2 = yield Async.wait(1000);
 
                 //로켓 위로
-                $('.btn-rocket-open').css({ opacity: 1 }).addClass('close');
+                $('.btn-rocket-open').addClass('close');
 
                 const delay3 = yield Async.wait(600);
 
