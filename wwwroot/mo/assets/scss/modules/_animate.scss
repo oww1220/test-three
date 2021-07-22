@@ -51,7 +51,8 @@
         left: 0;
         bottom: 0;
         right: 0;
-        background: linear-gradient(to right, #00cdff, #7d14ff);
+        background: url('../../../images/base-overlay.png') center center no-repeat;
+        background-size: cover;
         opacity: 0;
         pointer-events: none;
         transition: opacity 0.1s;
@@ -61,15 +62,17 @@
         }
     }
     .dummy {
-        background: url('../../../images/dumy-overlay.png') center center no-repeat;
+        background: url('../../../images/dumy-overlay2.png') center center no-repeat;
         position: fixed;
         top: 0;
         left: 0;
         bottom: 0;
         right: 0;
         background-size: cover;
-        transform: scale(20);
-        transform-origin: 50% 48%;
+        // transform: scale(20);
+        // transform-origin: 50% 48%;
+        transform: scale(200);
+        transform-origin: 50% 48.5%;
         pointer-events: none;
         transition: transform 0.7s;
     }
