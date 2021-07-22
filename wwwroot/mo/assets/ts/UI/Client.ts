@@ -149,16 +149,16 @@ $(() => {
                 $('.btn-rocket-close').removeClass('open');
                 $('.btn-rocket-close').addClass('close');
 
-                const delay1 = yield Async.wait(300);
+                //const delay1 = yield Async.wait(300);
 
                 //레이어팝업 닫힘
                 $('.layer-rocket').removeClass('active');
-                $('.btn-rocket-open').removeClass('open');
+                //$('.btn-rocket-open').removeClass('open');
 
                 const delay2 = yield Async.wait(1000);
 
                 //로켓 위로
-                $('.btn-rocket-open').addClass('close');
+                //$('.btn-rocket-open').addClass('close');
 
                 const delay3 = yield Async.wait(600);
 
