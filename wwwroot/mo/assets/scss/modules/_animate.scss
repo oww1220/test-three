@@ -122,11 +122,15 @@ body.overlay-hidden {
         overflow-x: hidden;
         overflow-y: auto;
         transition: all 0.5s;
-        &.active {
-            border-radius: 20px 20px 0 0;
-        }
         .layer-cont-in {
             padding: 20px;
+            opacity: 0;
+        }
+        &.active {
+            border-radius: 20px 20px 0 0;
+            .layer-cont-in {
+                opacity: 1;
+            }
         }
     }
 
