@@ -117,7 +117,7 @@ body.overlay-hidden {
     }
 
     .layer-cont {
-        height: 100%;
+        height: calc(100% - 26vw);
         background-color: #fff;
         overflow-x: hidden;
         overflow-y: auto;
