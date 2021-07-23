@@ -66,6 +66,8 @@ $(() => {
         function* drawerOpen() {
             eventChkFlag = false;
             try {
+                if ($('.layer-rocket').length) $('.layer-rocket').addClass('low-zIndex');
+
                 $('.bg-overlay').addClass('active');
 
                 const delay1 = yield Async.wait(600);
@@ -91,6 +93,7 @@ $(() => {
                 $('.drawer-cont').removeClass('bg');
 
                 $('.bg-overlay').removeClass('active');
+                if ($('.layer-rocket').length) $('.layer-rocket').removeClass('low-zIndex');
             } catch (err) {
                 log(err.message);
             }
