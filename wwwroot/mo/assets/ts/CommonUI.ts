@@ -1,6 +1,8 @@
 import '@babel/polyfill';
-import { IJqMap, Iiscrolls, SwiperParam, slideSortParam } from 'CommonUI';
+import { IJqMap, ILayerRocket } from 'CommonUI';
 import jQuery from 'jquery';
+
+const log = console.log;
 
 namespace CommonUI {
     export const $: JQueryStatic = jQuery;
@@ -198,6 +200,85 @@ namespace CommonUI {
             $('body').css({ top: 0 });
             $(window).scrollTop(that.scrollTop);
             $(window).off('resize.layer');
+        },
+    };
+    export const LayerRocket: ILayerRocket = {
+        cashGenerator: null,
+        eventChkFlag: true,
+        open(layer: string, callback?: (layer: string) => void) {
+            const that = this;
+            return function* () {
+                that.eventChkFlag = false;
+                const $target = $(layer);
+                try {
+                    //스크롤막음
+                    $('body').addClass('overlay-hidden');
+
+                    //레이어팝업 열림
+                    $target.addClass('active');
+
+                    const delay1 = yield Async.wait(700);
+
+                    //구름삭제
+                    $target.find('.layer-top').addClass('no-cloud');
+
+                    //로켓발사
+                    $target.find('.btn-rocket-open').addClass('open');
+
+                    const delay2 = yield Async.wait(300);
+
+                    //테두리 변경
+                    $target.find('.layer-cont').addClass('active');
+
+                    //닫기버튼활성화
+                    $target.find('.btn-rocket-close').addClass('open');
+
+                    if (callback) callback(layer);
+                } catch (err) {
+                    log(err.message);
+                }
+                that.eventChkFlag = true;
+            };
+        },
+        close(layer: string, callback?: (layer: string) => void) {
+            const that = this;
+            return function* () {
+                that.eventChkFlag = false;
+                const $target = $(layer);
+                try {
+                    //스크롤 풀기
+                    $('body').removeClass('overlay-hidden');
+
+                    //닫기버튼 사라짐
+                    $target.find('.btn-rocket-close').removeClass('open');
+                    $target.find('.btn-rocket-close').addClass('close');
+
+                    //const delay1 = yield Async.wait(300);
+
+                    //레이어팝업 닫힘
+                    $target.removeClass('active');
+                    //$('.btn-rocket-open').removeClass('open');
+
+                    const delay2 = yield Async.wait(1000);
+
+                    //로켓 위로
+                    $target.find('.btn-rocket-open').addClass('close');
+                    $target.find('.btn-rocket-open').removeClass('open');
+
+                    //const delay3 = yield Async.wait(300);
+
+                    //초기화
+                    $target.find('.btn-rocket-close').removeClass('close');
+                    $target.find('.btn-rocket-open').removeClass('close');
+                    $target.find('.layer-top').removeClass('no-cloud');
+                    $target.find('.layer-cont').removeClass('active');
+
+                    if (callback) callback(layer);
+                } catch (err) {
+                    log(err.message);
+                }
+                that.eventChkFlag = true;
+            };
         },
     };
     export const Event = {

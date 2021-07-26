@@ -19,6 +19,15 @@ declare module 'CommonUI' {
         init(target: string, option: IObj): void;
         resize(): void;
     }
+
+    export interface ILayerRocket {
+        cashGenerator: null | Generator;
+        eventChkFlag: boolean;
+        open(layer: string, callback?: (layer: string) => void): ()=>Generator;
+        close(layer: string, callback?: (layer: string) => void): ()=>Generator;
+    }
+
+
     /*
     export interface ILayer {
         scrollTop: number;
