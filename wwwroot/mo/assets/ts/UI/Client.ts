@@ -69,13 +69,14 @@ $(() => {
                 if ($('.layer-rocket').length) $('.layer-rocket').addClass('low-zIndex');
 
                 $('.bg-overlay').addClass('active');
+                $('#content').addClass('hide');
 
                 const delay1 = yield Async.wait(600);
 
                 $('.drawer-cont').addClass('bg');
 
                 const delay2 = yield Async.wait(100);
-                $('#content').addClass('hide');
+
                 $('.bg-overlay').addClass('hide');
             } catch (err) {
                 log(err.message);
@@ -118,81 +119,86 @@ $(() => {
         let cashGenerator: null | Generator = null;
         let eventChkFlag = true;
 
-        function* rocketOpen() {
+        function* rocketOpen(layer: string) {
             eventChkFlag = false;
+            const $target = $(layer);
             try {
                 //스크롤막음
                 $('body').addClass('overlay-hidden');
 
                 //레이어팝업 열림
-                $('.layer-rocket').addClass('active');
+                $target.addClass('active');
 
                 const delay1 = yield Async.wait(700);
 
                 //구름삭제
-                $('.layer-rocket .layer-top').addClass('no-cloud');
+                $target.find('.layer-top').addClass('no-cloud');
 
                 //로켓발사
-                $('.btn-rocket-open').addClass('open');
+                $target.find('.btn-rocket-open').addClass('open');
 
                 const delay2 = yield Async.wait(300);
 
                 //테두리 변경
-                $('.layer-rocket .layer-cont').addClass('active');
+                $target.find('.layer-cont').addClass('active');
 
                 //닫기버튼활성화
-                $('.btn-rocket-close').addClass('open');
+                $target.find('.btn-rocket-close').addClass('open');
             } catch (err) {
                 log(err.message);
             }
             eventChkFlag = true;
         }
 
-        function* rocketClose() {
+        function* rocketClose(layer: string) {
             eventChkFlag = false;
+            const $target = $(layer);
             try {
                 //스크롤 풀기
                 $('body').removeClass('overlay-hidden');
 
                 //닫기버튼 사라짐
-                $('.btn-rocket-close').removeClass('open');
-                $('.btn-rocket-close').addClass('close');
+                $target.find('.btn-rocket-close').removeClass('open');
+                $target.find('.btn-rocket-close').addClass('close');
 
                 //const delay1 = yield Async.wait(300);
 
                 //레이어팝업 닫힘
-                $('.layer-rocket').removeClass('active');
+                $target.removeClass('active');
                 //$('.btn-rocket-open').removeClass('open');
 
                 const delay2 = yield Async.wait(1000);
 
                 //로켓 위로
-                $('.btn-rocket-open').addClass('close');
-                $('.btn-rocket-open').removeClass('open');
+                $target.find('.btn-rocket-open').addClass('close');
+                $target.find('.btn-rocket-open').removeClass('open');
 
                 const delay3 = yield Async.wait(600);
 
                 //초기화
-                $('.btn-rocket-close').removeClass('close');
-                $('.btn-rocket-open').removeClass('close');
-                $('.layer-rocket .layer-top').removeClass('no-cloud');
-                $('.layer-rocket .layer-cont').removeClass('active');
+                $target.find('.btn-rocket-close').removeClass('close');
+                $target.find('.btn-rocket-open').removeClass('close');
+                $target.find('.layer-top').removeClass('no-cloud');
+                $target.find('.layer-cont').removeClass('active');
             } catch (err) {
                 log(err.message);
             }
             eventChkFlag = true;
         }
 
-        $('.btn-rocket-open').on('click', () => {
+        $('.rocket-layer-open').on('click', (e) => {
+            const layer = '.' + $(e.target).data('layer');
+            console.log(layer);
             //console.log(eventChkFlag);
             if (!eventChkFlag) return;
-            cashGenerator = rocketOpen();
+            cashGenerator = rocketOpen(layer);
             Async.generaterRun(cashGenerator);
         });
 
-        $('.btn-rocket-close').on('click', () => {
+        $('.btn-rocket-close').on('click', (e) => {
+            const layer = '.' + $(e.target).data('layer');
             if (!eventChkFlag) return;
-            cashGenerator = rocketClose();
+            cashGenerator = rocketClose(layer);
             Async.generaterRun(cashGenerator);
         });
     })();

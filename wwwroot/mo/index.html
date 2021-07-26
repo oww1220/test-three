@@ -47,21 +47,45 @@ All methods of installing three.js depend on ES modules (see Eloquent JavaScript
     </div>
     <div class="bg-overlay"></div>
 
+    <div style="position: relative; z-index: 11222">
+        <button type="button" class="rocket-layer-open" data-layer="rocket-obj-01">1번 레이어 열기</button>
+        <button type="button" class="rocket-layer-open" data-layer="rocket-obj-02">2번 레이어 열기</button>
+    </div>
 
 
-    <div class="layer-rocket">
+    <div class="layer-rocket rocket-obj-01">
         <div class="layer-top">
-            <button type="button" class="btn-rocket-open">
+            <div class="btn-rocket-open">
                 <img src="../images/bg-rocket.png" alt=""/>
-            </button>
-            <button type="button" class="btn-rocket-close">
+            </div>
+            <button type="button" class="btn-rocket-close" data-layer="rocket-obj-01">
                 close rocket layer
             </button>
         </div>
 
         <div class="layer-cont">
             <div class="layer-cont-in">
-                test!!!!!!!!!
+                test1111
+            </div>
+            
+        </div>
+
+    </div>
+
+
+    <div class="layer-rocket rocket-obj-02">
+        <div class="layer-top">
+            <div class="btn-rocket-open">
+                <img src="../images/bg-rocket.png" alt=""/>
+            </div>
+            <button type="button" class="btn-rocket-close" data-layer="rocket-obj-02">
+                close rocket layer
+            </button>
+        </div>
+
+        <div class="layer-cont">
+            <div class="layer-cont-in">
+                test222
             </div>
             
         </div>
