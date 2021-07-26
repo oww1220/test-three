@@ -67,7 +67,7 @@ $(() => {
             eventChkFlag = false;
             try {
                 if ($('.layer-rocket').length) $('.layer-rocket').addClass('low-zIndex');
-
+                $('.btn-drawer-open').hide();
                 $('.bg-overlay').addClass('active');
                 $('#content').addClass('hide');
 
@@ -88,6 +88,7 @@ $(() => {
             eventChkFlag = false;
             try {
                 $('#content').removeClass('hide');
+
                 $('.bg-overlay').removeClass('hide');
                 const delay1 = yield Async.wait(100);
 
@@ -95,6 +96,8 @@ $(() => {
 
                 $('.bg-overlay').removeClass('active');
                 if ($('.layer-rocket').length) $('.layer-rocket').removeClass('low-zIndex');
+                const delay2 = yield Async.wait(700);
+                $('.btn-drawer-open').show();
             } catch (err) {
                 log(err.message);
             }
@@ -173,7 +176,7 @@ $(() => {
                 $target.find('.btn-rocket-open').addClass('close');
                 $target.find('.btn-rocket-open').removeClass('open');
 
-                const delay3 = yield Async.wait(600);
+                //const delay3 = yield Async.wait(300);
 
                 //초기화
                 $target.find('.btn-rocket-close').removeClass('close');
@@ -188,7 +191,7 @@ $(() => {
 
         $('.rocket-layer-open').on('click', (e) => {
             const layer = '.' + $(e.target).data('layer');
-            console.log(layer);
+            //console.log(layer);
             //console.log(eventChkFlag);
             if (!eventChkFlag) return;
             cashGenerator = rocketOpen(layer);
