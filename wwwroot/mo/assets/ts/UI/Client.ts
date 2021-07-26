@@ -1,12 +1,22 @@
 import * as Universe from '@src/UI/Universe';
 import * as Planet from '@src/UI/Planet';
 import CommonUI from '@src/CommonUI';
+import AOS from 'aos';
 import $ from 'jquery';
 
 const log = console.log;
 const { Async } = CommonUI;
 
 $(() => {
+    // 패럴랙스 인스턴스 생성은 지연시킴!
+    setTimeout(() => {
+        AOS.init({
+            once: true,
+            delay: 400, // values from 0 to 3000, with step 50ms
+            duration: 600, // values from 0 to 3000, with step 50ms
+        });
+    }, 500);
+
     if (document.getElementById('webgl-universe')) {
         (() => {
             const stage = new Universe.Stage();
