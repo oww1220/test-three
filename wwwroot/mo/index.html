@@ -52,6 +52,39 @@ All methods of installing three.js depend on ES modules (see Eloquent JavaScript
         </p>
     </div>
 
+    <div data-aos="fade-up" style="position: relative; z-index: 11;margin-bottom: 30px;">
+        <button type="button" class="rocket-layer-open" data-layer="rocket-obj-01">1번 레이어 열기</button>
+        <button type="button" class="rocket-layer-open" data-layer="rocket-obj-02">2번 레이어 열기</button>
+    </div>
+
+
+    <div data-aos="fade-up">
+        <button type="button" class="swap" data-layer="rocket-obj-01">1번 레이어 로</button>
+        <button type="button" class="swap" data-layer="rocket-obj-02">2번 레이어 로</button>
+        <br/><br/>
+        <div class="moreBenefit">
+            <button type="button" class="rocket-layer-open" data-layer="rocket-obj-01">스왑열기</button>
+        </div>
+    </div>
+
+    <script>
+    setTimeout(function(){
+
+        $(function(){
+            $('.swap').on('click', function(){
+                var targetLayer = $(this).data('layer');
+                var $target = $('.moreBenefit .rocket-layer-open');
+                //$target.off('click');
+                //console.log(targetLayer);
+                //$target.removeAttr('data-layer');
+                $target.removeData('layer');
+                $target.attr('data-layer', targetLayer);
+            });
+        });
+
+    }, 500);
+    </script>
+
 
     <div class="drawer-W">
         <div class="drawer-cont">
@@ -75,10 +108,7 @@ All methods of installing three.js depend on ES modules (see Eloquent JavaScript
     <div data-aos="fade-up" id="lottie13" style="position: relative;z-index: 11;"></div>
     <div data-aos="fade-up" id="lottie14" style="position: relative;z-index: 11;"></div>
 
-    <div data-aos="fade-up" style="position: relative; z-index: 11">
-        <button type="button" class="rocket-layer-open" data-layer="rocket-obj-01">1번 레이어 열기</button>
-        <button type="button" class="rocket-layer-open" data-layer="rocket-obj-02">2번 레이어 열기</button>
-    </div>
+    
 
 
     <div class="layer-rocket rocket-obj-01">
