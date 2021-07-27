@@ -17,8 +17,10 @@ $(() => {
         });
     }, 500);
 
-    if ($('.mainTab').length) {
-        $('.mainTab ul li').on('click', () => {
+    if ($('.aos-tab').length) {
+        const $target = $('.aos-tab li');
+        $target.on('click', (e) => {
+            console.log(e.target);
             $('.aos-init').removeClass('aos-animate');
             AOS.refresh();
         });
