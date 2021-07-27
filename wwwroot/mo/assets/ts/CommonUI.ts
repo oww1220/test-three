@@ -93,11 +93,11 @@ namespace CommonUI {
         scrollTop: 0,
         calculate(layer: string) {
             const $layer = $(layer),
-                layerIn = $layer.find('.pop_inner'),
+                layerIn = $layer.find('.modal-inner'),
                 winH = $(window).height() || 0,
                 winW = $(window).width() || 0;
 
-            layerIn.find('.pop_scroll').removeAttr('style');
+            layerIn.find('.modal-scroll').removeAttr('style');
 
             const layerH = $layer.height() || 0,
                 layerW = $layer.width() || 0,
@@ -105,7 +105,7 @@ namespace CommonUI {
             //console.log(layer, winH, winW, layerH, layerW, marginH);
 
             if (winH < layerH) {
-                layerIn.find('.pop_scroll').css({
+                layerIn.find('.modal-scroll').css({
                     height: winH - marginH,
                     overflow: 'auto',
                 });
@@ -114,7 +114,7 @@ namespace CommonUI {
                     left: (winW - layerW) / 2,
                 });
             } else {
-                layerIn.find('.pop_scroll').removeAttr('style');
+                layerIn.find('.modal-scroll').removeAttr('style');
                 $layer.css({
                     top: (winH - layerH) / 2,
                     left: (winW - layerW) / 2,
