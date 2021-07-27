@@ -17,6 +17,13 @@ $(() => {
         });
     }, 500);
 
+    if ($('.mainTab').length) {
+        $('.mainTab ul li').on('click', () => {
+            $('.aos-init').removeClass('aos-animate');
+            AOS.refresh();
+        });
+    }
+
     if (document.getElementById('webgl-universe')) {
         (() => {
             const stage = new Universe.Stage();
