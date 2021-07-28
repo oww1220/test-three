@@ -11,7 +11,7 @@ $(() => {
             renderer: 'svg',
             loop: true,
             autoplay: true,
-            path: './json/00_data-01.json',
+            path: '../bundle/json/00_data-01.json',
         });
     }
     if (document.getElementById('lottie00_02')) {
@@ -20,7 +20,7 @@ $(() => {
             renderer: 'svg',
             loop: true,
             autoplay: true,
-            path: './json/00_data-02.json',
+            path: '../bundle/json/00_data-02.json',
         });
     }
     if (document.getElementById('lottie01')) {
@@ -29,7 +29,7 @@ $(() => {
             renderer: 'svg',
             loop: true,
             autoplay: true,
-            path: './json/01_data.json',
+            path: '../bundle/json/01_data.json',
         });
     }
     if (document.getElementById('lottie03')) {
@@ -38,7 +38,7 @@ $(() => {
             renderer: 'svg',
             loop: true,
             autoplay: true,
-            path: './json/03_data.json',
+            path: '../bundle/json/03_data.json',
         });
     }
     if (document.getElementById('lottie05')) {
@@ -47,7 +47,7 @@ $(() => {
             renderer: 'svg',
             loop: true,
             autoplay: true,
-            path: './json/05_data.json',
+            path: '../bundle/json/05_data.json',
         });
     }
     if (document.getElementById('lottie06')) {
@@ -56,7 +56,7 @@ $(() => {
             renderer: 'svg',
             loop: true,
             autoplay: true,
-            path: './json/06_data.json',
+            path: '../bundle/json/06_data.json',
         });
     }
     if (document.getElementById('lottie09')) {
@@ -65,7 +65,7 @@ $(() => {
             renderer: 'svg',
             loop: true,
             autoplay: true,
-            path: './json/09_data.json',
+            path: '../bundle/json/09_data.json',
         });
     }
     if (document.getElementById('lottie10')) {
@@ -74,7 +74,7 @@ $(() => {
             renderer: 'svg',
             loop: true,
             autoplay: true,
-            path: './json/10_data.json',
+            path: '../bundle/json/10_data.json',
         });
     }
     if (document.getElementById('lottie11')) {
@@ -83,7 +83,7 @@ $(() => {
             renderer: 'svg',
             loop: true,
             autoplay: true,
-            path: './json/11_data.json',
+            path: '../bundle/json/11_data.json',
         });
     }
     if (document.getElementById('lottie13')) {
@@ -92,7 +92,7 @@ $(() => {
             renderer: 'svg',
             loop: true,
             autoplay: true,
-            path: './json/13_data.json',
+            path: '../bundle/json/13_data.json',
         });
     }
     if (document.getElementById('lottie14')) {
@@ -101,7 +101,7 @@ $(() => {
             renderer: 'svg',
             loop: true,
             autoplay: true,
-            path: './json/14_data.json',
+            path: '../bundle/json/14_data.json',
         });
     }
 });
