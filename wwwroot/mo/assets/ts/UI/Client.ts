@@ -20,7 +20,7 @@ $(() => {
     if ($('.aos-tab').length) {
         const $target = $('.aos-tab li');
         $target.on('click', (e) => {
-            console.log(e.target);
+            //console.log(e.target);
             $('.aos-init').removeClass('aos-animate');
             AOS.refresh();
         });
@@ -209,8 +209,8 @@ $(() => {
         // }
 
         $(document).on('click', '.rocket-layer-open', (e) => {
-            const layer = '.' + $(e.target).data('layer');
-            //console.log(layer, $(e.target).data());
+            const layer = '.' + $(e.currentTarget).data('layer');
+            //console.log(layer, e.target, e.currentTarget);
             //console.log(eventChkFlag);
             if (!LayerRocket.eventChkFlag) return;
             LayerRocket.cashGenerator = LayerRocket.open(layer, (layer) => {
@@ -219,7 +219,7 @@ $(() => {
             Async.generaterRun(LayerRocket.cashGenerator);
         });
         $(document).on('click', '.btn-rocket-close', (e) => {
-            const layer = '.' + $(e.target).data('layer');
+            const layer = '.' + $(e.currentTarget).data('layer');
             if (!LayerRocket.eventChkFlag) return;
             LayerRocket.cashGenerator = LayerRocket.close(layer, (layer) => {
                 console.log(`${layer} layer close!`);
