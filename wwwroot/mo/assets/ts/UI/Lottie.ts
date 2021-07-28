@@ -104,4 +104,13 @@ $(() => {
             path: '../bundle/json/14_data.json',
         });
     }
+    if (document.getElementById('lottie15')) {
+        lottie.loadAnimation({
+            container: document.getElementById('lottie15')!,
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: '../bundle/json/15_data.json',
+        });
+    }
 });
