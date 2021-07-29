@@ -1,6 +1,7 @@
 import '@babel/polyfill';
-import { IJqMap, ILayerRocket } from 'CommonUI';
+import { IJqMap, ILayerRocket, ILottie } from 'CommonUI';
 import jQuery from 'jquery';
+import lottie from 'lottie-web';
 
 const log = console.log;
 
@@ -386,6 +387,17 @@ namespace CommonUI {
                     swap();
                 }
                 e.preventDefault();
+            });
+        },
+    };
+    export const Lottie = {
+        init({ elem, loopFlag, autoplayFlag, pathString }: ILottie) {
+            return lottie.loadAnimation({
+                container: elem!,
+                renderer: 'svg',
+                loop: loopFlag,
+                autoplay: autoplayFlag,
+                path: pathString,
             });
         },
     };

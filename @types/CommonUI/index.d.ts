@@ -20,6 +20,13 @@ declare module 'CommonUI' {
         resize(): void;
     }
 
+    export interface ILottie {
+        elem: HTMLElement | null;
+        loopFlag: boolean;
+        autoplayFlag: boolean;
+        pathString: string;
+    }
+
     export interface ILayerRocket {
         cashGenerator: null | Generator;
         eventChkFlag: boolean;

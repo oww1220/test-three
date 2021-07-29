@@ -1,116 +1,104 @@
 import CommonUI from '@src/CommonUI';
-import lottie from 'lottie-web';
 import $ from 'jquery';
 
 const log = console.log;
+const { Lottie } = CommonUI;
 
 $(() => {
     if (document.getElementById('lottie00_01')) {
-        lottie.loadAnimation({
-            container: document.getElementById('lottie00_01')!,
-            renderer: 'svg',
-            loop: true,
-            autoplay: true,
-            path: '../bundle/json/00_data-01.json',
+        Lottie.init({
+            elem: document.getElementById('lottie00_01'),
+            loopFlag: true,
+            autoplayFlag: true,
+            pathString: '../bundle/json/00_data-01.json',
         });
     }
     if (document.getElementById('lottie00_02')) {
-        lottie.loadAnimation({
-            container: document.getElementById('lottie00_02')!,
-            renderer: 'svg',
-            loop: true,
-            autoplay: true,
-            path: '../bundle/json/00_data-02.json',
+        Lottie.init({
+            elem: document.getElementById('lottie00_02'),
+            loopFlag: true,
+            autoplayFlag: true,
+            pathString: '../bundle/json/00_data-02.json',
         });
     }
     if (document.getElementById('lottie01')) {
-        lottie.loadAnimation({
-            container: document.getElementById('lottie01')!,
-            renderer: 'svg',
-            loop: true,
-            autoplay: true,
-            path: '../bundle/json/01_data.json',
+        Lottie.init({
+            elem: document.getElementById('lottie01')!,
+            loopFlag: true,
+            autoplayFlag: true,
+            pathString: '../bundle/json/01_data.json',
         });
     }
     if (document.getElementById('lottie03')) {
-        lottie.loadAnimation({
-            container: document.getElementById('lottie03')!,
-            renderer: 'svg',
-            loop: true,
-            autoplay: true,
-            path: '../bundle/json/03_data.json',
+        Lottie.init({
+            elem: document.getElementById('lottie03')!,
+            loopFlag: true,
+            autoplayFlag: true,
+            pathString: '../bundle/json/03_data.json',
         });
     }
     if (document.getElementById('lottie05')) {
-        lottie.loadAnimation({
-            container: document.getElementById('lottie05')!,
-            renderer: 'svg',
-            loop: true,
-            autoplay: true,
-            path: '../bundle/json/05_data.json',
+        Lottie.init({
+            elem: document.getElementById('lottie05')!,
+            loopFlag: true,
+            autoplayFlag: true,
+            pathString: '../bundle/json/05_data.json',
         });
     }
     if (document.getElementById('lottie06')) {
-        lottie.loadAnimation({
-            container: document.getElementById('lottie06')!,
-            renderer: 'svg',
-            loop: true,
-            autoplay: true,
-            path: '../bundle/json/06_data.json',
+        Lottie.init({
+            elem: document.getElementById('lottie06')!,
+            loopFlag: true,
+            autoplayFlag: true,
+            pathString: '../bundle/json/06_data.json',
         });
     }
     if (document.getElementById('lottie09')) {
-        lottie.loadAnimation({
-            container: document.getElementById('lottie09')!,
-            renderer: 'svg',
-            loop: true,
-            autoplay: true,
-            path: '../bundle/json/09_data.json',
+        Lottie.init({
+            elem: document.getElementById('lottie09')!,
+            loopFlag: true,
+            autoplayFlag: true,
+            pathString: '../bundle/json/09_data.json',
         });
     }
     if (document.getElementById('lottie10')) {
-        lottie.loadAnimation({
-            container: document.getElementById('lottie10')!,
-            renderer: 'svg',
-            loop: true,
-            autoplay: true,
-            path: '../bundle/json/10_data.json',
+        Lottie.init({
+            elem: document.getElementById('lottie10')!,
+            loopFlag: true,
+            autoplayFlag: true,
+            pathString: '../bundle/json/10_data.json',
         });
     }
     if (document.getElementById('lottie11')) {
-        lottie.loadAnimation({
-            container: document.getElementById('lottie11')!,
-            renderer: 'svg',
-            loop: true,
-            autoplay: true,
-            path: '../bundle/json/11_data.json',
+        Lottie.init({
+            elem: document.getElementById('lottie11')!,
+            loopFlag: true,
+            autoplayFlag: true,
+            pathString: '../bundle/json/11_data.json',
         });
     }
     if (document.getElementById('lottie13')) {
-        lottie.loadAnimation({
-            container: document.getElementById('lottie13')!,
-            renderer: 'svg',
-            loop: true,
-            autoplay: true,
-            path: '../bundle/json/13_data.json',
+        Lottie.init({
+            elem: document.getElementById('lottie13')!,
+            loopFlag: true,
+            autoplayFlag: true,
+            pathString: '../bundle/json/13_data.json',
         });
     }
     if (document.getElementById('lottie14')) {
-        lottie.loadAnimation({
-            container: document.getElementById('lottie14')!,
-            renderer: 'svg',
-            loop: true,
-            autoplay: true,
-            path: '../bundle/json/14_data.json',
+        Lottie.init({
+            elem: document.getElementById('lottie14')!,
+            loopFlag: true,
+            autoplayFlag: true,
+            pathString: '../bundle/json/14_data.json',
         });
     }
-    if (document.getElementById('lottie15')) {
-        lottie.loadAnimation({
-            container: document.getElementById('lottie15')!,
-            renderer: 'svg',
-            loop: true,
-            autoplay: true,
-            path: '../bundle/json/15_data.json',
-        });
-    }
+    // if (document.getElementById('lottie15')) {
+    //     Lottie.init({
+    //         elem: document.getElementById('lottie15')!,
+    //         loopFlag: true,
+    //         autoplayFlag: true,
+    //         pathString: '../bundle/json/15_data.json',
+    //     });
+    // }
 });
