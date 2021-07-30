@@ -105,7 +105,7 @@ body.overlay-hidden {
     .layer-top {
         display: flex;
         justify-content: center;
-        background: url('../../../images/bg-cloud.png') no-repeat center 15vw;
+        background: url('../images/bg-cloud.png') no-repeat center 15vw;
         background-size: cover;
         transition: all 1s;
         margin-bottom: -5px;
@@ -124,7 +124,8 @@ body.overlay-hidden {
         transition: all 0.5s;
         .layer-cont-in {
             color: #000;
-            padding: 20px;
+            //padding: 20px;
+            padding-bottom: 30px;
             opacity: 0;
         }
         &.active {
@@ -153,12 +154,13 @@ body.overlay-hidden {
             animation: slide-in-blurred-bottom 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
         }
     }
+
     .btn-rocket-close {
         position: absolute;
         top: 8vw;
         left: 50%;
         margin-left: -5vw;
-        background: url('../../../images/rocket-close.png') no-repeat center;
+        background: url('../images/rocket-close.png') no-repeat center;
         background-size: 70%;
         background-color: #fff;
         border-radius: 100%;
