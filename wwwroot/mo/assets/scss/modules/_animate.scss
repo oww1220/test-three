@@ -108,12 +108,11 @@ body.overlay-hidden {
         background: url('../images/bg-cloud.png') no-repeat center 60px;
         background-size: cover;
         margin-bottom: -5px;
-        height: 90px;
-        padding-bottom: 90px;
-        transition: background-position 1.5s, padding-bottom 2s;
+        height: 180px;
+        transition: background-position 1.5s, height 1.5s;
         &.no-cloud {
             background-position: center -300%;
-            padding-bottom: 0;
+            height: 90px;
         }
     }
 
