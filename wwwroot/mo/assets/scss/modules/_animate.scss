@@ -110,7 +110,7 @@ body.overlay-hidden {
         margin-bottom: -5px;
         height: 90px;
         padding-bottom: 90px;
-        transition: all 1s;
+        transition: background-position 2s, padding-bottom 1s;
         &.no-cloud {
             background-position: center -300%;
             padding-bottom: 0;
