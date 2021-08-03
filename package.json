@@ -4,6 +4,8 @@
   "description": "test-three",
   "main": "index.js",
   "scripts": {
+    "pc": "env-cmd -f .env.pc gulp",
+    "mo": "env-cmd -f .env.mo gulp",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

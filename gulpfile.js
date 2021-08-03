@@ -1,4 +1,4 @@
-const URL = 'mo';
+const URL = process.env.APP_ENV_URL || 'mo';
 const path = require("path");
 
 const gulp = require('gulp');
