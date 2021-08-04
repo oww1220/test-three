@@ -5,6 +5,7 @@ declare global {
     interface Window{
         CommonUI: any;
         $: JQuery;
+        THREE: any;
     }
     interface HTMLElement {
         iscrolls?: IScroll;
@@ -17,7 +18,7 @@ declare global {
 }
 
 declare module 'three' {
-    Geometry()
+    Geometry();
 }
 
 
