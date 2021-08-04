@@ -1,6 +1,6 @@
-import * as Universe from '@src/UI/Universe';
-import * as Planet from '@src/UI/Planet';
-import CommonUI from '@src/CommonUI';
+import * as Universe from '@src/mo/UI/Universe';
+import * as Planet from '@src/mo/UI/Planet';
+import CommonUI from '@src/mo/CommonUI';
 import AOS from 'aos';
 import $ from 'jquery';
 

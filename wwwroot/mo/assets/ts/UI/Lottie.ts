@@ -1,4 +1,4 @@
-import CommonUI from '@src/CommonUI';
+import CommonUI from '@src/mo/CommonUI';
 import $ from 'jquery';
 
 const log = console.log;

@@ -1,5 +1,5 @@
-import * as Universe from '@src/UI/Universe';
-import CommonUI from '@src/CommonUI';
+import * as Universe from '@src/pc/UI/Universe';
+import CommonUI from '@src/pc/CommonUI';
 import AOS from 'aos';
 import $ from 'jquery';
 

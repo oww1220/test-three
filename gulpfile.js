@@ -90,7 +90,7 @@ gulp.task('webpack', ()=>
         resolve: {
             //별칭으로 절대경로 설정
             alias: {
-                '@src': path.resolve(__dirname, `wwwroot/${URL}/assets/scripts/build`)
+                [`@src/${URL}`]: path.resolve(__dirname, `wwwroot/${URL}/assets/scripts/build`)
             },
             /*
             //모듈 절대경로 설정: 배열 첫번째 항목은 로컬(사용자)모듈, 두번째 항목은 node모듈
