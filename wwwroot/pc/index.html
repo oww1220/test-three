@@ -8,11 +8,7 @@
 	<title></title>
 
     <link rel="stylesheet" href="./assets/styles/modules.css">
-    <script defer type="text/javascript" src="./assets/bundle/jquery.chunk.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r124/three.min.js" integrity="sha512-jeYvJdyAYkpQCY/omvCYQo89qA5YxDW4JBT7COPsHT2sOAanwxkZRFeP9gc69b5reSDpZIoyCqZQZcWZkbB5Gw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <!-- <script defer type="text/javascript" src="./assets/bundle/three.chunk.js"></script> -->
-    <script defer type="text/javascript" src="./assets/bundle/vendors.chunk.js"></script>
-    <script defer type="text/javascript" src="./assets/bundle/main.chunk.js"></script>
+    
 
     
 </head>
@@ -84,6 +80,7 @@ Whichever you choose, be consistent and import all files from the same version o
 <br/>
 All methods of installing three.js depend on ES modules (see Eloquent JavaScript: ECMAScript Modules), which allow you to include only the parts of the library needed in the final project.<br/>
         </p>
+        
     </div>
 
 
@@ -112,6 +109,54 @@ All methods of installing three.js depend on ES modules (see Eloquent JavaScript
 
 </div>
 
+    <script type="text/javascript" src="./assets/bundle/jquery.chunk.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r124/three.min.js" integrity="sha512-jeYvJdyAYkpQCY/omvCYQo89qA5YxDW4JBT7COPsHT2sOAanwxkZRFeP9gc69b5reSDpZIoyCqZQZcWZkbB5Gw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- <script type="text/javascript" src="./assets/bundle/three.chunk.js"></script> -->
+    <script type="text/javascript" src="./assets/bundle/vendors.chunk.js"></script>
+    <script type="text/javascript" src="./assets/bundle/main.chunk.js"></script>
+
+
+
+    <script>
+        $(function(){
+
+            //모달레이어 오픈
+            $(document).on('click', '.test-open-modal', function(e){
+                var layer = '.' + $(e.target).data('layer');
+                /**
+                 * CommonUI.LayerRocket.open(layer: string, dimmed: string, parent: string, callback?: ((layer: string) => void) | undefined): void;
+                 * @param {string} layer : 첫번째 파라미터는 오픈할 고유클래스를 넘겨줌(필수)
+                 * @param {string} dimmed : 두번째 파라미터는 딤드 클래스를 넘겨줌(필수)
+                 * @param {string} parent : 세번째 파라미터는 모달레이어 래핑클래스를 넘겨줌(필수)
+                 * @param {(layer: string)=>void)} callback : 마지막 파라미터로 오픈후 콜백 넘겨줌(선택)
+                 * @return {void} : 리턴값 없음
+                */
+                CommonUI.Layer.open(layer, '.modal-dimmed', '.modal-layer', function(){
+                    //레이어 오픈후 콜백함수 문맥
+                    console.log(layer + ': modal-layer open!');
+                });
+            });
+
+            //모달레이어 닫기
+            $(document).on('click', '.btn-modal-close', function(e){
+                var layer = '.' + $(e.target).data('layer');
+                /**
+                 * CommonUI.LayerRocket.close(layer: string, dimmed: string, parent: string, callback?: ((layer: string) => void) | undefined): void;
+                 * @param {string} layer : 첫번째 파라미터는 닫을 고유클래스를 넘겨줌(필수)
+                 * @param {string} dimmed : 두번째 파라미터는 딤드 클래스를 넘겨줌(필수)
+                 * @param {string} parent : 세번째 파라미터는 모달레이어 래핑클래스를 넘겨줌(필수)
+                 * @param {(layer: string)=>void)} callback : 마지막 파라미터로 오픈후 콜백 넘겨줌(선택)
+                 * @return {void} : 리턴값 없음
+                */
+                CommonUI.Layer.close(layer, '.modal-dimmed', '.modal-layer', function(){
+                    //레이어 오픈후 콜백함수 문맥
+                    console.log(layer + ': modal-layer close!');
+                });
+            });
+
+            
+        });
+    </script>
 
 </body>
 </html>

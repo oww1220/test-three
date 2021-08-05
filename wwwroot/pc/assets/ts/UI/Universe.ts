@@ -54,7 +54,7 @@ export class Stage {
         const windowHeight = window.innerHeight;
 
         if (!this.isInitialized) {
-            this.camera = new window.THREE.PerspectiveCamera(100, this.renderParam.width / this.renderParam.height);
+            this.camera = new window.THREE.PerspectiveCamera(70, this.renderParam.width / this.renderParam.height);
         }
 
         this.camera!.aspect = windowWidth / windowHeight;
@@ -100,9 +100,9 @@ export class Mesh {
         const geometry = new window.THREE.Geometry();
         for (let i = 0; i < 20000; i++) {
             const star = new window.THREE.Vector3();
-            star.x = window.THREE.MathUtils.randFloatSpread(2000);
-            star.y = window.THREE.MathUtils.randFloatSpread(2000);
-            star.z = window.THREE.MathUtils.randFloatSpread(2000);
+            star.x = window.THREE.MathUtils.randFloatSpread(1700);
+            star.y = window.THREE.MathUtils.randFloatSpread(1700);
+            star.z = window.THREE.MathUtils.randFloatSpread(1700);
 
             geometry.vertices.push(star);
         }
