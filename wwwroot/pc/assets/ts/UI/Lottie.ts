@@ -37,6 +37,14 @@ $(() => {
             pathString: '../bundle/json/03_data.json',
         });
     }
+    if (document.getElementById('lottie04')) {
+        Lottie.init({
+            elem: document.getElementById('lottie04')!,
+            loopFlag: true,
+            autoplayFlag: true,
+            pathString: '../bundle/json/04_data.json',
+        });
+    }
     if (document.getElementById('lottie05')) {
         Lottie.init({
             elem: document.getElementById('lottie05')!,
