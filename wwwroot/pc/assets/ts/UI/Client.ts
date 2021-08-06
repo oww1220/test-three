@@ -4,7 +4,7 @@ import AOS from 'aos';
 import $ from 'jquery';
 
 const log = console.log;
-const { Async } = CommonUI;
+const { Async, LayerRocket } = CommonUI;
 
 $(() => {
     // 패럴랙스 인스턴스 생성은 지연시킴!
@@ -50,4 +50,25 @@ $(() => {
             _raf();
         })();
     }
+
+    (() => {
+        $(document).on('click', '.rocket-layer-open', (e) => {
+            const layer = '.' + $(e.currentTarget).data('layer');
+            //console.log(layer, e.target, e.currentTarget);
+            //console.log(eventChkFlag);
+            if (!LayerRocket.eventChkFlag) return;
+            LayerRocket.cashGenerator = LayerRocket.open(layer, (layer) => {
+                console.log(`${layer} layer open!`);
+            })();
+            Async.generaterRun(LayerRocket.cashGenerator);
+        });
+        $(document).on('click', '.btn-rocket-close', (e) => {
+            const layer = '.' + $(e.currentTarget).data('layer');
+            if (!LayerRocket.eventChkFlag) return;
+            LayerRocket.cashGenerator = LayerRocket.close(layer, (layer) => {
+                console.log(`${layer} layer close!`);
+            })();
+            Async.generaterRun(LayerRocket.cashGenerator);
+        });
+    })();
 });
