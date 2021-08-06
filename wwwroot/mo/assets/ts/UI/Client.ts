@@ -91,12 +91,13 @@ $(() => {
                 $('#content').addClass('hide');
 
                 const delay1 = yield Async.wait(600);
-
+                //$('#content').addClass('hide');
                 $('.drawer-cont').addClass('bg');
 
                 const delay2 = yield Async.wait(100);
 
                 $('.bg-overlay').addClass('hide');
+                $('.btn-drawer-close').show();
             } catch (err) {
                 log(err.message);
             }
@@ -106,16 +107,15 @@ $(() => {
         function* drawerClose() {
             eventChkFlag = false;
             try {
-                $('#content').removeClass('hide');
-
+                $('.btn-drawer-close').hide();
                 $('.bg-overlay').removeClass('hide');
                 const delay1 = yield Async.wait(100);
-
                 $('.drawer-cont').removeClass('bg');
 
                 $('.bg-overlay').removeClass('active');
                 if ($('.layer-rocket').length) $('.layer-rocket').removeClass('low-zIndex');
                 const delay2 = yield Async.wait(700);
+                $('#content').removeClass('hide');
                 $('.btn-drawer-open').show();
             } catch (err) {
                 log(err.message);

@@ -98,7 +98,7 @@ export class Mesh {
 
     _setMesh() {
         const geometry = new THREE.Geometry();
-        for (let i = 0; i < 10000; i++) {
+        for (let i = 0; i < 6000; i++) {
             const star = new THREE.Vector3();
             star.x = THREE.MathUtils.randFloatSpread(2000);
             star.y = THREE.MathUtils.randFloatSpread(2000);
