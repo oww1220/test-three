@@ -106,12 +106,13 @@ export class Mesh {
 
             geometry.vertices.push(star);
         }
-        const texture = new THREE.TextureLoader().load('../images/ico-star_on.png');
+        const texture = new THREE.TextureLoader().load('../images/ico-star.png');
         const material = new THREE.PointsMaterial({
             color: 0xffffff,
-            size: 1,
+            size: 3,
             map: texture,
         });
+        material.alphaTest = 0.5;
         this.mesh = new THREE.Points(geometry, material);
         this.stage.scene.add(this.mesh);
     }
