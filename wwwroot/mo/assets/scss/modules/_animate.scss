@@ -78,13 +78,48 @@
     //transform-origin: 50% 48.5%;
     pointer-events: none;
     transition: transform 0.7s;
-    opacity: 1;
+    //opacity: 1;
+    display: none;
     z-index: 5;
     &.active {
         transform: scale(1);
     }
     &.hide {
         opacity: 0;
+    }
+}
+
+.intro-overlay {
+    background: url('../../../images/dumy-overlay2.png') center center no-repeat;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-size: cover;
+    transform: scale(1);
+    transform-origin: 50% 46%;
+    transition: transform 2.5s, background-color 2.3s;
+    background-color: #fff;
+    z-index: 111;
+
+    .intro-video {
+        width: 100%;
+        video {
+            position: absolute;
+            transform: translate3d(-50%, -50%, 0);
+            top: 50%;
+            left: 50%;
+            //min-width: 100%;
+            //min-height: 100%;
+            max-width: 80%;
+            //height: auto;
+        }
+    }
+
+    &.active {
+        background-color: transparent;
+        transform: scale(20);
     }
 }
 

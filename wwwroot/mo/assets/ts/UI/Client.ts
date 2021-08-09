@@ -78,6 +78,26 @@ $(() => {
         })();
     }
 
+    // intro
+    (() => {
+        if ($('.intro-overlay').length) {
+            function* introClose() {
+                try {
+                    const delay0 = yield Async.wait(500);
+                    $<HTMLVideoElement>('.intro-overlay .intro-video video').get(0).play();
+                    const delay1 = yield Async.wait(2000);
+                    $('.intro-overlay .intro-video').hide();
+                    $('.intro-overlay').addClass('active');
+                    const delay3 = yield Async.wait(2000);
+                    $('.intro-overlay').hide();
+                } catch (err) {
+                    log(err.message);
+                }
+            }
+            Async.generaterRun(introClose());
+        }
+    })();
+
     (() => {
         let cashGenerator: null | Generator = null;
         let eventChkFlag = true;
@@ -86,6 +106,10 @@ $(() => {
             eventChkFlag = false;
             try {
                 if ($('.layer-rocket').length) $('.layer-rocket').addClass('low-zIndex');
+
+                $('.bg-overlay').show();
+                const delay0 = yield Async.wait(100);
+
                 $('.btn-drawer-open').hide();
                 $('.bg-overlay').addClass('active');
                 $('#content').addClass('hide');
@@ -114,8 +138,12 @@ $(() => {
 
                 $('.bg-overlay').removeClass('active');
                 if ($('.layer-rocket').length) $('.layer-rocket').removeClass('low-zIndex');
-                const delay2 = yield Async.wait(700);
+                const delay2 = yield Async.wait(200);
                 $('#content').removeClass('hide');
+
+                const delay3 = yield Async.wait(100);
+                $('.bg-overlay').hide();
+
                 $('.btn-drawer-open').show();
             } catch (err) {
                 log(err.message);
