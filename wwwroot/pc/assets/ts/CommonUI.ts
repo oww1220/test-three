@@ -216,6 +216,11 @@ namespace CommonUI {
                     $('body').addClass('overlay-hidden');
 
                     //레이어팝업 열림
+                    $target.css({ display: 'flex' });
+
+                    const delay0 = yield Async.wait(100);
+
+                    //레이어팝업 열림
                     $target.addClass('active');
 
                     //const delay1 = yield Async.wait(700);
@@ -275,6 +280,10 @@ namespace CommonUI {
                     //$target.find('.btn-rocket-open').removeClass('close');
                     //$target.find('.layer-top').removeClass('no-cloud');
                     //$target.find('.layer-cont').removeClass('active');
+
+                    const delay4 = yield Async.wait(100);
+
+                    $target.hide();
 
                     if (callback) callback(layer);
                 } catch (err) {
