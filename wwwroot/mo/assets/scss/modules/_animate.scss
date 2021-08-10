@@ -111,7 +111,6 @@
         //min-height: 100%;
         max-width: 100%;
         //height: auto;
-        overflow: hidden;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -126,10 +125,10 @@
             display: block;
             content: '';
             width: 100%;
-            height: 3px;
+            height: 5px;
             background-color: #fff;
             position: absolute;
-            top: 0;
+            top: -2px;
             left: 0;
             z-index: 2;
         }
