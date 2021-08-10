@@ -5,14 +5,14 @@ const log = console.log;
 const { Lottie } = CommonUI;
 
 $(() => {
-    if (document.getElementById('lottie00_01')) {
-        Lottie.init({
-            elem: document.getElementById('lottie00_01'),
-            loopFlag: true,
-            autoplayFlag: true,
-            pathString: '../bundle/json/00_data-01.json',
-        });
-    }
+    // if (document.getElementById('lottie00_01')) {
+    //     Lottie.init({
+    //         elem: document.getElementById('lottie00_01'),
+    //         loopFlag: true,
+    //         autoplayFlag: true,
+    //         pathString: '../bundle/json/00_data-01.json',
+    //     });
+    // }
     if (document.getElementById('lottie00_02')) {
         Lottie.init({
             elem: document.getElementById('lottie00_02'),

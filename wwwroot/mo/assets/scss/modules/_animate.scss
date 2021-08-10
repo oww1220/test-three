@@ -118,14 +118,6 @@
         overflow: hidden;
         width: 200px;
         height: 100px;
-        video {
-            position: relative;
-            outline: none;
-            border: none;
-            width: 300px;
-            height: 120px;
-            background-color: #fff;
-        }
     }
 
     &.active {

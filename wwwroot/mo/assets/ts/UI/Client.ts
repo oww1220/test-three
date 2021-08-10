@@ -5,7 +5,7 @@ import AOS from 'aos';
 import $ from 'jquery';
 
 const log = console.log;
-const { Async, LayerRocket } = CommonUI;
+const { Async, LayerRocket, Lottie } = CommonUI;
 
 $(() => {
     // 패럴랙스 인스턴스 생성은 지연시킴!
@@ -81,10 +81,17 @@ $(() => {
     // intro
     (() => {
         if ($('.intro-overlay').length) {
+            const aniObj = Lottie.init({
+                elem: document.getElementById('lottie00_01'),
+                loopFlag: false,
+                autoplayFlag: false,
+                pathString: '../bundle/json/00_data-01.json',
+            });
             function* introClose() {
                 try {
                     const delay0 = yield Async.wait(500);
-                    $<HTMLVideoElement>('.intro-overlay .intro-video video').get(0).play();
+                    //$<HTMLVideoElement>('.intro-overlay .intro-video video').get(0).play();
+                    aniObj.play();
                     const delay1 = yield Async.wait(2000);
                     $('.intro-overlay .intro-video').hide();
                     $('.intro-overlay').addClass('active');
@@ -94,7 +101,7 @@ $(() => {
                     log(err.message);
                 }
             }
-            //Async.generaterRun(introClose());
+            Async.generaterRun(introClose());
         }
     })();
 
