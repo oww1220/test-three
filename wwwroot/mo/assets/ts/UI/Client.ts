@@ -94,7 +94,7 @@ $(() => {
                     log(err.message);
                 }
             }
-            Async.generaterRun(introClose());
+            //Async.generaterRun(introClose());
         }
     })();
 
