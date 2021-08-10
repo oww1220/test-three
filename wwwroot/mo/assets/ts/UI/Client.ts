@@ -1,5 +1,5 @@
 import * as Universe from '@src/mo/UI/Universe';
-import * as Planet from '@src/mo/UI/Planet';
+//import * as Planet from '@src/mo/UI/Planet';
 import CommonUI from '@src/mo/CommonUI';
 import AOS from 'aos';
 import $ from 'jquery';
@@ -52,31 +52,31 @@ $(() => {
         })();
     }
 
-    if (document.getElementById('webgl-planet')) {
-        (() => {
-            const stage = new Planet.Stage();
+    // if (document.getElementById('webgl-planet')) {
+    //     (() => {
+    //         const stage = new Planet.Stage();
 
-            stage.init();
+    //         stage.init();
 
-            const mesh = new Planet.Mesh(stage);
+    //         const mesh = new Planet.Mesh(stage);
 
-            mesh.init();
+    //         mesh.init();
 
-            window.addEventListener('resize', () => {
-                stage.onResize();
-            });
+    //         window.addEventListener('resize', () => {
+    //             stage.onResize();
+    //         });
 
-            const _raf = () => {
-                window.requestAnimationFrame(() => {
-                    stage.onRaf();
-                    mesh.onRaf();
-                    _raf();
-                });
-            };
+    //         const _raf = () => {
+    //             window.requestAnimationFrame(() => {
+    //                 stage.onRaf();
+    //                 mesh.onRaf();
+    //                 _raf();
+    //             });
+    //         };
 
-            _raf();
-        })();
-    }
+    //         _raf();
+    //     })();
+    // }
 
     // intro
     (() => {

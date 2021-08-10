@@ -103,18 +103,24 @@
     z-index: 111;
 
     .intro-video {
-        width: 100%;
+        position: absolute;
+        transform: translate3d(-50%, -50%, 0);
+        top: 50%;
+        left: 50%;
+        //min-width: 100%;
+        //min-height: 100%;
+        max-width: 100%;
+        //height: auto;
+        outline: none;
+        border: none;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         video {
-            position: absolute;
-            transform: translate3d(-50%, -50%, 0);
-            top: 50%;
-            left: 50%;
-            //min-width: 100%;
-            //min-height: 100%;
-            max-width: 80%;
-            //height: auto;
-            outline: none;
-            border: none;
+            max-width: 110%;
+            margin-top: -2%;
+            margin-bottom: -2%;
         }
     }
 
