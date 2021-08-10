@@ -54,7 +54,7 @@ export class Stage {
         const windowHeight = window.innerHeight;
 
         if (!this.isInitialized) {
-            this.camera = new window.THREE.PerspectiveCamera(70, this.renderParam.width / this.renderParam.height);
+            this.camera = new window.THREE.PerspectiveCamera(150, this.renderParam.width / this.renderParam.height);
         }
 
         this.camera!.aspect = windowWidth / windowHeight;
@@ -100,24 +100,25 @@ export class Mesh {
         const geometry = new window.THREE.Geometry();
         for (let i = 0; i < 20000; i++) {
             const star = new window.THREE.Vector3();
-            star.x = window.THREE.MathUtils.randFloatSpread(1700);
-            star.y = window.THREE.MathUtils.randFloatSpread(1700);
-            star.z = window.THREE.MathUtils.randFloatSpread(1700);
+            star.x = window.THREE.MathUtils.randFloatSpread(2000);
+            star.y = window.THREE.MathUtils.randFloatSpread(2000);
+            star.z = window.THREE.MathUtils.randFloatSpread(2000);
 
             geometry.vertices.push(star);
         }
-        const texture = new window.THREE.TextureLoader().load('../images/ico-star_on.png');
+        const texture = new window.THREE.TextureLoader().load('../images/ico-star.png');
         const material = new window.THREE.PointsMaterial({
             color: 0xffffff,
             size: 1,
             map: texture,
         });
+        material.alphaTest = 0.5;
         this.mesh = new window.THREE.Points(geometry, material);
         this.stage.scene.add(this.mesh);
     }
 
     _render() {
-        this.mesh!.rotation.y += 0.0005;
+        this.mesh!.rotation.y += 0.0002;
     }
 
     onRaf() {
