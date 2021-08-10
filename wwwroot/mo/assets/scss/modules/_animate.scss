@@ -111,16 +111,17 @@
         //min-height: 100%;
         max-width: 100%;
         //height: auto;
-        outline: none;
-        border: none;
         overflow: hidden;
         display: flex;
         align-items: center;
         justify-content: center;
+        background-color: #fff;
         video {
-            max-width: 110%;
+            max-width: 120%;
             margin-top: -2%;
             margin-bottom: -2%;
+            outline: none;
+            border: none;
         }
     }
 
