@@ -4,14 +4,14 @@ import AOS from 'aos';
 import $ from 'jquery';
 
 const log = console.log;
-const { Async, LayerRocket } = CommonUI;
+const { Async, LayerRocket, Lottie } = CommonUI;
 
 $(() => {
     // 패럴랙스 인스턴스 생성은 지연시킴!
     setTimeout(() => {
         AOS.init({
             once: true,
-            delay: 400, // values from 0 to 3000, with step 50ms
+            delay: 200, // values from 0 to 3000, with step 50ms
             duration: 600, // values from 0 to 3000, with step 50ms
         });
     }, 500);
@@ -50,6 +50,33 @@ $(() => {
             _raf();
         })();
     }
+
+    // intro
+    (() => {
+        if ($('.intro-overlay').length) {
+            const aniObj = Lottie.init({
+                elem: document.getElementById('lottie00_01'),
+                loopFlag: false,
+                autoplayFlag: false,
+                pathString: '../bundle/json/00_data-01.json',
+            });
+            function* introClose() {
+                try {
+                    const delay0 = yield Async.wait(500);
+                    //$<HTMLVideoElement>('.intro-overlay .intro-video video').get(0).play();
+                    aniObj.play();
+                    const delay1 = yield Async.wait(2000);
+                    $('.intro-overlay .intro-video').hide();
+                    $('.intro-overlay').addClass('active');
+                    const delay3 = yield Async.wait(2000);
+                    $('.intro-overlay').hide();
+                } catch (err) {
+                    log(err.message);
+                }
+            }
+            Async.generaterRun(introClose());
+        }
+    })();
 
     (() => {
         $(document).on('click', '.rocket-layer-open', (e) => {
