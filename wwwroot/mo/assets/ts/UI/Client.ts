@@ -12,7 +12,7 @@ $(() => {
     setTimeout(() => {
         AOS.init({
             once: true,
-            delay: 400, // values from 0 to 3000, with step 50ms
+            delay: 200, // values from 0 to 3000, with step 50ms
             duration: 600, // values from 0 to 3000, with step 50ms
         });
     }, 500);
@@ -128,7 +128,7 @@ $(() => {
                 const delay2 = yield Async.wait(100);
 
                 $('.bg-overlay').addClass('hide');
-                $('.btn-drawer-close').show();
+                $('.btn-drawer-close').fadeIn();
             } catch (err) {
                 log(err.message);
             }
@@ -151,7 +151,7 @@ $(() => {
                 const delay3 = yield Async.wait(100);
                 $('.bg-overlay').hide();
 
-                $('.btn-drawer-open').show();
+                $('.btn-drawer-open').fadeIn();
             } catch (err) {
                 log(err.message);
             }
